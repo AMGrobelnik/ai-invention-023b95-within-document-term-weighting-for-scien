@@ -1,0 +1,43 @@
+{
+  "datasets": [
+    {
+      "id": "DinoStackAI/qasper-rag",
+      "role": "PRIMARY",
+      "description": "QASPER reformatted for RAG evaluation. Derived from Dasigi et al. 2021 (NAACL, 577 citations). Contains corpus chunks with section_name, queries, relevance judgments (qrels), and gold answers.",
+      "provenance": "https://arxiv.org/abs/2105.03011 — AllenAI NAACL 2021",
+      "downloads_hf": 208,
+      "configs": {
+        "corpus": {"splits": {"train": 81550}, "columns": ["id","title","section_name","text"]},
+        "queries": {"splits": {"train": 2101, "dev": 890, "test": 1310}, "columns": ["id","text"]},
+        "qrels": {"splits": {"train": 3815, "dev": 1913, "test": 3434}, "columns": ["query_id","corpus_id","score"]},
+        "answers": {"splits": {"train": 2101, "dev": 890, "test": 1310}, "columns": ["query_id","answer"]}
+      },
+      "files": {
+        "corpus_train": "temp/datasets/full_DinoStackAI_qasper-rag_corpus_train.json",
+        "queries_dev": "temp/datasets/full_DinoStackAI_qasper-rag_queries_dev.json",
+        "queries_test": "temp/datasets/full_DinoStackAI_qasper-rag_queries_test.json",
+        "qrels_dev": "temp/datasets/full_DinoStackAI_qasper-rag_qrels_dev.json",
+        "qrels_test": "temp/datasets/full_DinoStackAI_qasper-rag_qrels_test.json",
+        "answers_dev": "temp/datasets/full_DinoStackAI_qasper-rag_answers_dev.json",
+        "answers_test": "temp/datasets/full_DinoStackAI_qasper-rag_answers_test.json"
+      },
+      "suitability": "Directly supports section-level retrieval: corpus has section_name per chunk; qrels map queries to evidence chunks enabling precise retrieval evaluation; gold answers allow F1 scoring. Use dev split (890 queries, 1913 qrels) for benchmarking."
+    },
+    {
+      "id": "abertsch/converted_qasper",
+      "role": "SECONDARY",
+      "description": "QASPER QA pairs with full passage context. Each row has a question paired with a candidate section text and binary label (relevant/not). 2567 train / 1726 val / 1399 test rows.",
+      "provenance": "Derived from allenai/qasper (Dasigi et al. 2021, NAACL). 487 HF downloads.",
+      "downloads_hf": 487,
+      "configs": {
+        "default": {"splits": {"train": 2567, "validation": 1726, "test": 1399}, "columns": ["id","pid","input","output"]}
+      },
+      "files": {
+        "train": "temp/datasets/full_abertsch_converted_qasper_default_train.json"
+      },
+      "suitability": "Useful for answer F1 evaluation: input field has question + section text, output field has gold answer string. Complements primary dataset for end-to-end QA scoring."
+    }
+  ],
+  "selection_rationale": "Both datasets are derived from QASPER (NAACL 2021, 577 citations), a gold-standard scientific QA benchmark over 1,585 NLP papers. The primary dataset (qasper-rag) provides the complete retrieval evaluation infrastructure: section-chunked corpus with section_name labels, information-seeking queries, relevance judgments, and gold answers — exactly matching the artifact plan's requirements for section-level retrieval benchmarking. The secondary dataset provides QA pair format for F1 scoring.",
+  "upload_ignore_regexes": ["(^|/)temp/datasets/full_DinoStackAI_qasper-rag_corpus_train\\.json$"]
+}

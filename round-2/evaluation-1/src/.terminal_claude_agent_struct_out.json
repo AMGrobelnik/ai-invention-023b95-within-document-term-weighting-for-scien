@@ -1,0 +1,14 @@
+{
+  "title": "TF-ISF vs BM25 vs Cosine Retrieval Evaluation",
+  "layman_summary": "Statistical comparison of three paper-section retrieval methods, finding no significant differences between them and revealing that LLM confabulation (68% hallucination rate) dominates over retrieval quality as the main bottleneck.",
+  "summary": "Comprehensive evaluation of the iter_1 experiment results (n=180, tencent/hy3:free LLM, QASPER scientific QA dataset). All three retrieval methods — TF-ISF (F1=0.221), BM25 (F1=0.213), Cosine (F1=0.206) — were evaluated with:\n\n1. **Pairwise F1 bootstrap CIs**: TF-ISF vs Cosine diff=+0.015 95%CI=[-0.018,+0.047]; TF-ISF vs BM25 diff=+0.007; BM25 vs Cosine diff=+0.008. All Holm-Bonferroni corrected p-values = 1.0 (not significant).\n\n2. **Effect sizes**: Hedges' g = 0.097 (TF-ISF vs Cosine), 0.047 (TF-ISF vs BM25), 0.050 (BM25 vs Cosine) — all negligible (<0.2).\n\n3. **Per-example F1 statistics**: High variance (std≈0.155 for all methods), consistent with LLM-quality bottleneck.\n\n4. **Subgroup analysis by section type**: TF-ISF best on Result (0.197) and Unknown (0.226); BM25 best on Method (0.270); Cosine best on Related (0.269). No subgroup differences reach significance.\n\n5. **Hallucination rate**: cosine=62.2%, bm25=70.0%, tf_isf=71.7% — the LLM generates F1>0 answers with zero retrieval recall in 62-72% of cases, indicating widespread confabulation.\n\n6. **Kruskal-Wallis variance decomposition**: H=0.753, p=0.686, eta²≈0 — method choice explains essentially zero variance in F1.\n\n7. **Reliability assessment**: LOW — no significant differences after multiple-comparison correction, negligible effect sizes, wide CIs (≈0.045 width), and 68% average hallucination rate from free-tier LLM. The earlier claim of 'TF-ISF CONFIRMED' is not supported by rigorous statistics.\n\n8. **Root cause**: The dominant source of F1 variance is LLM quality (confabulation), not retrieval method. Upgrading the reader LLM is the highest-leverage intervention.\n\nNote: The artifact plan references a second experiment (n=200) for comparison, but only iter_1 (n=180) exists with results.",
+  "out_expected_files": {
+    "script": "eval.py",
+    "full_output": "eval_out.json",
+    "mini_output": "mini_eval_out.json",
+    "preview_output": "preview_eval_out.json"
+  },
+  "upload_ignore_regexes": [
+    "(^|/)logs/"
+  ]
+}

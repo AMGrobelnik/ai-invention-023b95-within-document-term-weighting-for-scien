@@ -1,0 +1,94 @@
+{
+  "dataset": "QASPER",
+  "n_questions": 180,
+  "methods": [
+    {
+      "name": "cosine",
+      "mean_f1": 0.20552434183900734,
+      "std_f1": 0.15162789313170877,
+      "mean_section_recall": 0.15379629629629626,
+      "section_recall_by_type": {
+        "Unknown": 0.17116666666666663,
+        "Method": 0.1525252525252525,
+        "Result": 0.06333333333333332,
+        "Related": 0.25,
+        "Introduction": 0.0,
+        "Abstract": 1.0
+      },
+      "f1_by_type": {
+        "Unknown": 0.20815819439819505,
+        "Method": 0.2117130572314837,
+        "Result": 0.18514450981150693,
+        "Related": 0.2689407270313278,
+        "Introduction": 0.3404255319148936,
+        "Abstract": 0.18503118503118504
+      },
+      "n": 180
+    },
+    {
+      "name": "bm25",
+      "mean_f1": 0.21328098200181952,
+      "std_f1": 0.15563906729633065,
+      "mean_section_recall": 0.10638888888888888,
+      "section_recall_by_type": {
+        "Unknown": 0.109,
+        "Method": 0.13888888888888887,
+        "Result": 0.06666666666666667,
+        "Related": 0.0,
+        "Introduction": 0.0,
+        "Abstract": 0.5
+      },
+      "f1_by_type": {
+        "Unknown": 0.21470842279010782,
+        "Method": 0.27043668606512716,
+        "Result": 0.1635349562832577,
+        "Related": 0.18703882042849437,
+        "Introduction": 0.28,
+        "Abstract": 0.21288515406162467
+      },
+      "n": 180
+    },
+    {
+      "name": "tf_isf",
+      "mean_f1": 0.22058306422495058,
+      "std_f1": 0.15648373575363575,
+      "mean_section_recall": 0.09805555555555555,
+      "section_recall_by_type": {
+        "Unknown": 0.13066666666666665,
+        "Method": 0.08838383838383838,
+        "Result": 0.041666666666666664,
+        "Related": 0.0,
+        "Introduction": 0.0,
+        "Abstract": 0.0
+      },
+      "f1_by_type": {
+        "Unknown": 0.2261304645183169,
+        "Method": 0.2387395517050506,
+        "Result": 0.19708403570347613,
+        "Related": 0.22997051599932006,
+        "Introduction": 0.15384615384615383,
+        "Abstract": 0.12820512820512822
+      },
+      "n": 180
+    }
+  ],
+  "comparison": {
+    "tf_isf_vs_cosine_f1_delta": 0.0151,
+    "tf_isf_vs_cosine_section_recall_delta": -0.0557,
+    "methods_ranked_by_f1": [
+      "tf_isf",
+      "bm25",
+      "cosine"
+    ]
+  },
+  "analysis": {
+    "key_finding": "TF-ISF F1=0.221 vs Cosine F1=0.206 vs BM25 F1=0.213. Best method: tf_isf.",
+    "subgroups_where_tf_isf_wins": [
+      "Result",
+      "Unknown",
+      "Method"
+    ],
+    "api_cost_spent": 0.0,
+    "api_calls_made": 540
+  }
+}

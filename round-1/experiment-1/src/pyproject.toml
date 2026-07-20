@@ -1,0 +1,21 @@
+[project]
+name = "gen-art-experiment-1"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = [
+    "datasets==5.0.0",
+    "sentence-transformers==5.6.0",
+    "rank-bm25==0.2.2",
+    "numpy==2.5.1",
+    "scikit-learn==1.9.0",
+    "loguru==0.7.3",
+    "requests==2.34.2",
+    "tenacity==9.1.4",
+    "tqdm==4.69.0",
+    "huggingface-hub==0.29.3",
+    "transformers==4.50.3",
+    "scipy==1.18.0",
+    "joblib==1.5.3",
+    "tokenizers==0.21.4",
+    "pyarrow==25.0.0",
+]

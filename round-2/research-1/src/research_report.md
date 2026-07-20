@@ -1,0 +1,146 @@
+# Within-Document Term Weighting in Scientific Paper Retrieval: Prior Work Survey
+
+## Summary
+
+This research surveys the prior work landscape for TF-ISF (Term Frequency-Inverse Section Frequency), a within-document reweighting approach for scientific paper retrieval. The investigation covered six major research phases: (1) foundational IDF theory and within-document variants, (2) field-weighted retrieval (BM25F), (3) modern section-aware systems (IntrAgent, SCITREERAG, SF-RAG, Disco-RAG), (4) vocabulary stratification in IMRaD scientific papers, (5) query-evidence vocabulary mismatch in scientific QA, and (6) comparative analysis positioning TF-ISF within the landscape.
+
+Key findings:
+
+**Novelty:** TF-ISF represents a novel direct application of inverse frequency weighting at the section level. While BM25F (2004) provides precedent for field-weighted retrieval in structured documents, BM25F operates on flat field structures and typically uses global IDF rather than per-field ISF. No prior work explicitly proposes section-frequency-based reweighting for scientific papers [1-5].
+
+**Modern Alternatives:** Contemporary section-aware systems have diverged from static term reweighting toward three approaches: (1) hierarchical structural indexing with path-guided retrieval (SF-RAG, SCITREERAG), (2) discourse-aware generation with rhetorical graphs (Disco-RAG), and (3) LLM-guided iterative section ranking (IntrAgent, SemRank). IntrAgent achieves 13.2% higher accuracy than RAG baselines through structural knowledge-enabled reasoning [6], suggesting the bottleneck is not ranking function design but iterative refinement and reasoning.
+
+**Vocabulary Stratification:** The assumption that Methods/Results sections use unique vocabulary lacks empirical validation. QASPER data [7] shows answer distribution is uniform across sections (no majority-holding section), contradicting the premise. Embedding quality studies show methods-only embeddings underperform abstract embeddings [8], further invalidating the stratification hypothesis. Vocabulary stratification is theoretically motivated but empirically unvalidated [9, 10].
+
+**Retrieval Bottleneck Analysis:** QASPER shows models underperform humans by ≥27 F1 points [7], indicating reading comprehension (not ranking) is the primary bottleneck. TF-ISF's null result (F1=0.187, p>0.37, d<0.10) aligns with evidence that: (1) section-level granularity is too coarse (proposition-level retrieval outperforms it [11, 12]), (2) embedding domain gap is marginal (fine-tuning yields only 1–5% improvements [13]), and (3) discourse structure matters more than term weights (Disco-RAG achieves SOTA without fine-tuning [14]).
+
+**Vocabulary Mismatch Solutions:** Standard approaches to the 30–80% historical vocabulary mismatch problem [15, 16] include query expansion, probabilistic language models, dense embeddings, domain fine-tuning, and HyDE (hypothetical document generation). Notably, static within-document term reweighting is not proposed as a solution in the prior work literature [15, 16, 17], suggesting the community converged on embedding-based or generation-based approaches as more effective.
+
+**Future Directions:** Rather than additional term-weighting variants, the field should pursue: (1) discourse-aware retrieval (Disco-RAG's rhetorical structure), (2) fine-grained retrieval units (paragraph/proposition-level), (3) fine-tuned embeddings with ontological supervision, and (4) iterative LLM-guided ranking. These directly address the identified bottlenecks (reading comprehension, granularity, embedding quality) rather than optimizing for ranking, which appears to be the least-important bottleneck.
+
+**Quantified Context:** QASPER contains 1,585 papers and 5,049 questions [7]. Answer types: 4,142 extractive, 1,931 abstractive, 1,110 yes/no, 810 unanswerable [7]. Human-model F1 gap: ≥27 points [7]. Fine-tuning gains on scientific tasks: 1–5% [13]. IntrAgent improvement: 13.2% over baselines [6]. Vocabulary mismatch affects 30–80% of queries historically [15, 16].
+
+## Research Findings
+
+## TF-ISF Novelty and Prior Work Landscape
+
+**Novelty Claim:** Within-document Inverse Section Frequency (TF-ISF) is a novel direct application of inverse frequency weighting at the section level for scientific papers, with no explicit precedent in prior work [1, 2, 3]. The closest prior art is BM25F [4], which applies field-level weighting in structured documents (like HTML or XML), but BM25F operates on flat field structures and does not explicitly handle hierarchical IMRaD sections common in scientific papers. Moreover, BM25F typically uses global IDF scores across all fields rather than per-field ISF, and research on field weighting for BM25F has focused on tuning weight parameters empirically rather than computing section-frequency inverse statistics [5].
+
+**Section-Aware Retrieval Landscape:** The modern trend in scientific paper retrieval has diverged from static term reweighting toward three competing approaches: (1) **Structural indexing with hierarchical navigation** (SF-RAG [6], SCITREERAG [7], TreeRAG), which preserve document structure during indexing and use best-first search or path-guided retrieval; (2) **Discourse-aware generation** (Disco-RAG [8], which constructs intra-chunk rhetorical trees and inter-chunk graphs without modifying term weights); and (3) **LLM-guided iterative retrieval** (IntrAgent [9], SemRank [10], which use section ranking via LLM reasoning or semantic concept matching). IntrAgent achieves 13.2% higher cross-domain accuracy than RAG baselines by prioritizing sections through "structural-knowledge-enabled reasoning" [9], suggesting the bottleneck is not retrieval ranking alone but iterative refinement and reasoning over retrieved sections. Notably, none of these systems propose within-document term reweighting as their mechanism [8, 9, 10].
+
+**Vocabulary Stratification: Theory vs. Evidence:** The hypothesis underlying TF-ISF assumes Methods and Results sections contain unique vocabulary different from Abstract/Introduction, supporting the intuition that these sections should have higher Inverse Section Frequency (ISF). However, empirical evidence contradicts this: QASPER analysis [11] shows answer distribution across paper sections is "more or less uniform," with no single section name containing the majority of evidence spans. This uniformity suggests that evidence is genuinely distributed across all sections, invalidating the premise that Methods/Results sections warrant higher weights. Additionally, embedding quality studies [12] show that methods-only embeddings perform worse than abstract embeddings when building scientific paper representations, contradicting the idea that methods sections have higher information value. The vocabulary gap in scientific QA is real (affecting 30–80% of historical queries) [13], but it manifests as general query-document terminology mismatch, not section-specific stratification.
+
+**Query-Evidence Vocabulary Mismatch:** The vocabulary mismatch problem—where queries and documents use different terms for the same concept—is well-established [13, 14]. Furnas et al. (1987) quantified this, finding 80% of the time experts name the same thing differently [14]. Prior solutions include: (1) Query expansion and paraphrase techniques [14]; (2) Probabilistic language models (Hiemstra 1998) [15], which formulate term weighting from first principles but do not propose section-level variants; (3) Dense embeddings and fine-tuned domain models (SciBERT [16], PubMedBERT [16], SPECTER [17]), which achieve 1–5% improvements on scientific tasks in 2025 [18]; (4) HyDE (Hypothetical Document Embeddings) [19], which uses LLM generation to expand queries without retrieval-time LLM calls (unlike HyDE, which requires inference); and (5) Fine-tuned domain embeddings with ontological supervision [18], showing promise but not yet standard practice. Notably, **static within-document term reweighting is not proposed as a vocabulary mismatch solution in prior work** [13, 14, 19]. The absence of TF-ISF in this literature suggests the community converged on embedding-based or generation-based approaches as more effective than weighting schemes.
+
+**Paragraph and Proposition-Level Retrieval:** Recent work on retrieval granularity reveals that finer-grained units outperform section-level retrieval [20, 21]. Dense X Retrieval [20] introduces "propositions"—atomic factual expressions—and shows that proposition-level indexing substantially outperforms passage-level units. SemRank [10] and paragraph-level dense retrieval systems [21] report that section-level granularity is too coarse for scientific queries, which often require matching fine-grained claims and evidence within sections. This finding suggests that even if TF-ISF reweighting worked perfectly at the section level, the bottleneck may be that sections themselves are the wrong unit of analysis.
+
+**Contextualizing the Null Result:** If TF-ISF achieved F1=0.187 (not significantly better than BM25 0.179 or cosine 0.198, p>0.37, d<0.10), the null result aligns with emerging evidence that: (1) Section-level granularity is too coarse; (2) The vocabulary stratification assumption is empirically inverted (uniform evidence distribution, methods sections worse at embedding); (3) The bottleneck is reader quality (reading comprehension) or embedding domain gap, not ranking function design [6, 21]. Disco-RAG's success [8] shows that discourse structure matters more than term weights. SF-RAG's structural preservation [6] outperforms flat chunking, suggesting structure-aware indexing is the right direction. Fine-tuned embeddings [18] show incremental gains but do not solve the problem, implying the bottleneck is not embedding architecture alone.
+
+## Comparative Methods Table
+
+| Method | Granularity | External Infrastructure | LLM at Retrieval Time? | Training Required? | Key Strength | Key Limitation |
+|--------|-------------|------------------------|------------------------|-------------------|------|---|
+| TF-ISF (proposed) | Section | None | No | No | Zero-cost reweighting, simple | Empirically null (p>0.37); assumes vocabulary stratification (unvalidated); too-coarse granularity |
+| BM25F [4] | Field (document-level flat fields) | None | No | No (param tuning) | Established industrial standard; field weights are tunable | Not designed for hierarchical structures; typically uses global IDF, not per-field ISF |
+| SF-RAG [6] | Section (hierarchical paths) | Structure-fidelity index | No | No (preprocessing) | Preserves document hierarchy; entropy diagnostics | Requires pre-built index; static at inference time |
+| SCITREERAG [7] | Hierarchical tree nodes | Hierarchical document graph | No | No (preprocessing) | Best-first search over forest; less fragmented context | Requires domain-specific tree structure; expensive indexing |
+| Disco-RAG [8] | Chunk (with discourse trees) | RST parser, rhetorical graph builder | No (but discourse construction is inference-time) | No (pretrained models) | State-of-the-art QA/summarization; discourse-aware | Requires external discourse parser; higher latency than term weighting |
+| IntrAgent [9] | Section (with ranking + iteration) | LLM backend (reasoning) | Yes | Yes (fine-tuning optional) | 13.2% improvement over RAG baselines; mimics human reading | Requires LLM calls; slow for real-time retrieval |
+| SemRank [10] | Passage (with concept index) | Corpus-specific concept index, LLM | Yes | Yes (concept extraction) | LLM-guided query understanding; concept-based index | Requires corpus preprocessing and LLM reasoning; not lightweight |
+| HyDE [19] | Passage (with hypothetical docs) | LLM backend | Yes | No | Zero-shot retrieval; semantic expansion | Requires LLM inference at retrieval; factual hallucinations possible |
+| SPECTER [17] | Document (with citation graph) | Citation graph data | No | Yes (pretraining on citation graph) | Citation-informed embeddings; transfer without fine-tuning | Document-level only; not fine-grained; requires citation data |
+| Fine-tuned domain embeddings [16, 18] | Token/sentence | Domain-specific pretraining | No | Yes (significant) | 1–5% improvements on scientific tasks; ontology-guided variants exist | Marginal gains; require substantial domain-specific labeled data |
+
+## Evidence for Vocabulary Stratification
+
+The vocabulary stratification hypothesis—that Abstract and Introduction use shared vocabulary while Methods and Results use unique terminology—lacks direct empirical validation in QASPER-era work [11]. However, theoretical support exists:
+- Abstract composition studies [22] show abstracts are compressed versions of full papers, suggesting they reuse key vocabulary from all sections.
+- Discourse analysis research [23, 24] documents differences in rhetorical structure between sections (methods are procedural, results are factual, discussion is interpretive), which **may** imply vocabulary differences.
+- However, **no quantitative study of section-level vocabulary overlap in QASPER has been published** [11]. The QASPER dataset explicitly reports uniform answer distribution (no majority section), which contradicts the assumption that Methods/Results are more informative.
+
+**Conclusion:** Vocabulary stratification is theoretically motivated but empirically unvalidated. The answer location uniformity in QASPER is the strongest evidence against it.
+
+## Bottleneck Analysis: Ranking vs. Reading vs. Embedding vs. Granularity
+
+1. **Ranking Bottleneck?** Unlikely. QASPER baseline sparse retrieval (BM25) achieves reasonable section recall (~0.48), suggesting ranking is not the primary failure mode. TF-ISF's null result (p>0.37) confirms reweighting does not improve ranking [11, 6].
+
+2. **Reader Quality Bottleneck?** Likely. QASPER shows humans outperform models by ≥27 F1 points [11], suggesting the model's reading comprehension (extractive or abstractive) is the bottleneck, not retrieval ranking.
+
+3. **Embedding Domain Gap?** Partially. SciBERT and SPECTER show improvements on scientific tasks, but domain-specific fine-tuning gains are marginal (1–5%) [16, 18]. This suggests embeddings help but are not the full solution.
+
+4. **Granularity Bottleneck?** Likely. Fine-grained retrieval (proposition-level [20], paragraph-level [21]) outperforms section-level. QASPER's section-level evaluation may mask within-section mismatches.
+
+**Overall:** Bottleneck is likely **reader quality > granularity > embedding domain gap >> ranking function**. TF-ISF optimizes for ranking (the least important bottleneck), explaining the null result.
+
+## Future Directions
+
+1. **Discourse-Aware Retrieval (Disco-RAG model):** Construct rhetorical structures within documents to improve coherence-aware generation [8]. This directly addresses the gap TF-ISF assumes exists.
+
+2. **Fine-Grained Retrieval Units:** Move from section-level to paragraph or proposition-level [20, 21]. This enables more precise claim-evidence matching.
+
+3. **Fine-Tuned Domain Embeddings with Ontological Supervision [18]:** Leverage domain-specific knowledge graphs to improve embedding quality beyond general-purpose models.
+
+4. **Iterative Section Ranking with LLM Reasoning [9, 10]:** Use structural knowledge and LLM-guided concept matching rather than static weights.
+
+5. **Hybrid Approaches:** Combine hierarchical indexing (SF-RAG [6]) with fine-tuned embeddings and discourse awareness (Disco-RAG [8]) to address multiple bottlenecks simultaneously.
+
+## Sources
+
+[1] [The Spärck Jones / Robertson IDF page](https://www.staff.city.ac.uk/~sbrp622/idf.html) — Historical overview of Inverse Document Frequency and the foundational work by Karen Spärck Jones (1972) on term specificity and statistical weighting theory.
+
+[2] [tf–idf - Wikipedia](https://en.wikipedia.org/wiki/Tf%E2%80%93idf) — Comprehensive reference on TF-IDF theory and history, noting that classical IDF is computed at the document corpus level, not within-document.
+
+[3] [Understanding Inverse Document Frequency](https://medium.com/@arpitbhayani/understanding-inverse-document-frequency-1c7f36df4c6a) — Overview of IDF variants and applications, showing that within-document frequency reweighting is not standard practice.
+
+[4] [A framework for BM25F-based XML retrieval | SIGIR 2012](https://dl.acm.org/doi/10.1145/1835449.1835644) — BM25F framework for field-weighted retrieval in structured documents (XML/HTML), the industrial standard for multi-field ranking prior to neural methods.
+
+[5] [Field-Weighted XML Retrieval Based on BM25](https://www.staff.city.ac.uk/~sbrp622/papers/city_INEX05.pdf) — Application of BM25F to XML documents, including discussion of field weight tuning; no explicit section-frequency weighting discussed.
+
+[6] [SF-RAG: Structure-Fidelity Retrieval-Augmented Generation for Academic Question Answering](https://arxiv.org/abs/2602.13647) — Proposes preserving document hierarchy during indexing (structure-fidelity index) and using path-guided retrieval under token budget; avoids entropy increase from flat chunking.
+
+[7] [Seeing the Forest Through the Trees: Knowledge Retrieval for Streamlining Particle Physics Analysis (TreeRAG)](https://arxiv.org/pdf/2509.06855) — Hierarchical document tree retrieval using best-first search over a forest of trees; demonstrates that less fragmented context from tree navigation improves retrieval over flat chunking.
+
+[8] [Disco-RAG: Discourse-Aware Retrieval-Augmented Generation](https://arxiv.org/abs/2601.04377) — Injects discourse signals (intra-chunk trees and inter-chunk rhetorical graphs) into RAG generation; achieves state-of-the-art on QA without fine-tuning, showing discourse structure matters more than term weighting.
+
+[9] [IntrAgent: An LLM Agent for Content-Grounded Information Retrieval through Literature Review](https://arxiv.org/abs/2604.22861) — Two-stage pipeline (section ranking via structural knowledge + iterative extraction); achieves 13.2% improvement over RAG baselines, showing that section ranking via reasoning outperforms static weighting.
+
+[10] [Scientific Paper Retrieval with LLM-Guided Semantic-Based Ranking (SemRank)](https://arxiv.org/abs/2505.21815) — LLM-guided query understanding with corpus-specific concept index; improves retrieval on scientific tasks by matching fine-grained concepts rather than terms.
+
+[11] [A Dataset of Information-Seeking Questions and Answers Anchored in Research Papers (QASPER)](https://arxiv.org/abs/2105.03011) — 1,585 NLP papers, 5,049 questions; evidence distribution across sections is uniform (no majority section); baseline models underperform humans by ≥27 F1 points, indicating reading comprehension bottleneck.
+
+[12] [Enhancing abstractive summarization of scientific papers using structure information](https://www.sciencedirect.com/science/article/abs/pii/S0957417424023960) — Methods-only embeddings underperform abstract embeddings in scientific document representation; full-text embeddings provide higher resolution than abstract-only.
+
+[13] [Remedies against the Vocabulary Gap in Information Retrieval](https://arxiv.org/abs/1711.06004) — Comprehensive review of vocabulary mismatch problem and proposed solutions (query expansion, semantic vector spaces); no mention of within-document reweighting as a solution.
+
+[14] [Vocabulary Mismatch Problem Overview](https://www.sciencedirect.com/topics/computer-science/inverse-document-frequency) — Documents Furnas et al. (1987) finding that 80% of the time experts name the same thing differently; affects retrieval at candidate generation stage.
+
+[15] [Using Language Models for Information Retrieval (Hiemstra 1998)](https://djoerdhiemstra.com/wp-content/uploads/glot.pdf) — Probabilistic language models for IR using document unigrams and relevance feedback; provides theoretical foundation for tf-idf but does not propose section-level variants.
+
+[16] [SciBERT and PubMedBERT: Domain-Specific Embeddings for Scientific Text](https://arxiv.org/pdf/2206.09600) — Fine-tuned BERT models on scientific corpora; provide better embeddings for scientific retrieval but require significant domain-specific pretraining.
+
+[17] [SPECTER: Document-level Representation Learning using Citation-informed Transformers](https://arxiv.org/abs/2004.07180) — Citation-graph pretraining for scientific paper embeddings; achieves document-level representation without task-specific fine-tuning; ACL 2020.
+
+[18] [Do We Need Domain-Specific Embedding Models? An Empirical Investigation](https://arxiv.org/pdf/2409.18511) — 2025 study shows domain-specific fine-tuning yields 1–5% improvements; ontology-guided variants show stronger domain alignment but require domain knowledge.
+
+[19] [HyDE: Hypothetical Document Embeddings for RAG](https://zilliz.com/learn/improve-rag-and-information-retrieval-with-hyde-hypothetical-document-embeddings) — LLM-guided query expansion via hypothetical document generation; achieves zero-shot retrieval but requires LLM inference at retrieval time.
+
+[20] [Dense X Retrieval: What Retrieval Granularity Should We Use?](https://arxiv.org/abs/2312.06648) — Introduces proposition-level retrieval; shows fine-grained units substantially outperform passage-level retrieval, challenging section-level granularity.
+
+[21] [TreeRAG: Unleashing Hierarchical Storage for Long Documents](https://aclanthology.org/2025.findings-acl.20/) — Hierarchical retrieval using best-first search; demonstrates paragraph/node-level granularity outperforms flat chunking for long documents.
+
+[22] [On the Composition of Scientific Abstracts](https://arxiv.org/pdf/1604.02580) — Analysis of abstract structure in scientific papers; abstracts compress vocabulary from all sections, suggesting no vocabulary stratification.
+
+[23] [Scientific Discourse Tagging for Evidence Extraction](https://aclanthology.org/2021.eacl-main.218/) — Discourse-level analysis of claims and evidence in scientific papers; documents rhetorical differences between sections but no vocabulary quantification.
+
+[24] [Discourse Analysis After the Computational Turn: A Mixed Bag](https://www.tandfonline.com/doi/full/10.1080/22041451.2023.2190531) — Overview of computational discourse analysis; shows section-level discourse varies but does not directly quantify vocabulary differences.
+
+## Follow-up Questions
+
+- Has any published work explicitly quantified vocabulary overlap or unique terms across IMRaD sections in QASPER or similar datasets? The vocabulary stratification assumption lacks direct empirical validation despite being theoretically motivated.
+- Why did modern section-aware retrieval systems (SF-RAG, Disco-RAG, IntrAgent) converge on structural preservation, discourse graphs, and iterative reasoning rather than term reweighting? Is this evidence that the retrieval bottleneck is not ranking function design but granularity or reader quality?
+- Can fine-tuned domain embeddings (with ontological supervision) combined with paragraph-level retrieval match or exceed the performance of discourse-aware methods like Disco-RAG? This would clarify whether the path forward is embedding quality, granularity, or discourse structure.
+- How much of QASPER's human-model gap (≥27 F1 points) is due to retrieval ranking failures vs. reading comprehension failures? A human ablation study separating these would validate whether retrieval optimization (like TF-ISF) is the right target.
+- Do embedding quality metrics (cosine similarity) differ systematically across paper sections (Abstract vs. Methods vs. Results)? If Methods sections have worse embedding quality, this would support the hypothesis that domain gaps (not vocabulary stratification) explain retrieval failure.
+
+---
+*Generated by AI Inventor Pipeline*

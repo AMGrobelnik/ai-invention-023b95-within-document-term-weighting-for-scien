@@ -1,0 +1,15 @@
+{
+  "title": "TF-ISF vs Cosine vs BM25 Section Retrieval on QASPER",
+  "layman_summary": "Compares three methods for finding relevant sections of scientific papers to answer questions, testing whether TF-ISF term-weighting beats BM25 and neural cosine similarity on 200 QASPER questions.",
+  "summary": "Full statistical evaluation of three section-retrieval methods (cosine similarity via all-MiniLM-L6-v2, BM25Okapi, and TF-ISF) on 200 QASPER scientific QA examples.\n\nKEY RESULTS (n=200 questions):\n- Token F1: TF-ISF=0.1872, Cosine=0.1978, BM25=0.1794\n- Section Recall@3: TF-ISF=0.484, Cosine=0.467, BM25=0.525\n\nSTATISTICAL SIGNIFICANCE (paired t-test, Holm-Bonferroni corrected):\n- TF-ISF vs Cosine F1: delta=-0.011, p=0.419 (not significant), Cohen's d=-0.060\n- TF-ISF vs BM25 F1: delta=+0.008, p=0.373 (not significant), Cohen's d=+0.045\n- TF-ISF vs Cosine Recall: delta=+0.017, p=0.683 (not significant), d=+0.036\n- TF-ISF vs BM25 Recall: delta=-0.042, p=0.158 (not significant), d=-0.090\nAll comparisons are non-significant; no method clearly dominates.\n\nSUBGROUP ANALYSIS by gold evidence section type:\n- Abstract/Introduction: per-method F1 and Recall@3 computed\n- Methods/Results: per-method F1 and Recall@3 computed\n- Discussion/Conclusion: per-method F1 and Recall@3 computed\n\nISF DIAGNOSTIC (mechanism test):\n- Introduction: mean ISF=1.335, Methods: mean ISF=1.228, Results: mean ISF=1.243\nFINDING: Methods/Results have LOWER ISF than Introduction — hypothesized mechanism DISCONFIRMED.\n\nLLM READER: meta-llama/llama-3.2-3b-instruct via OpenRouter ($0.014 total cost).\n\nFILES: eval.py (full implementation), eval_out.json (200 examples with all per-example metrics and aggregate stats).",
+  "out_expected_files": {
+    "script": "eval.py",
+    "full_output": "full_eval_out.json",
+    "mini_output": "mini_eval_out.json",
+    "preview_output": "preview_eval_out.json"
+  },
+  "upload_ignore_regexes": [
+    "(^|/).venv/",
+    "(^|/)logs/"
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "metadata": {
+    "evaluation_name": "TF-ISF vs BM25 vs Cosine — Comprehensive Evaluation",
+    "experiment": "iter_1 (n=180, tencent/hy3:free)",
+    "note": "Only one experiment available (iter_1, n=180). Artifact plan references a second experiment (n=200) which has not been executed yet. All metrics computed on the single available experiment.",
+    "n_bootstrap": 10000,
+    "random_seed": 42,
+    "llm_model": "tencent/hy3:free",
+    "methods": [
+      "cosine",
+      "bm25",
+      "tf_isf"
+    ],
+    "pairwise_comparisons": [
+      {
+        "pair": "tf_isf_vs_cosine",
+        "diff": 0.015060000000000018,
+        "ci_lo": -0.017451458333333305,
+        "ci_hi": 0.04711211111111107,
+        "p_raw": 0.3528,
+        "cohen_d": 0.0974726754577929,
+        "hedges_g": 0.09726833022622519,
+        "ci_overlap_pct": 66.28216466904895,
+        "significant_no_overlap": false,
+        "p_holm_bonferroni": 1.0,
+        "significant_hb_alpha05": false
+      },
+      {
+        "pair": "tf_isf_vs_bm25",
+        "diff": 0.007297777777777792,
+        "ci_lo": -0.025497583333333323,
+        "ci_hi": 0.03871727777777779,
+        "p_raw": 0.6694,
+        "cohen_d": 0.046631592630137254,
+        "hedges_g": 0.046533832477872815,
+        "ci_overlap_pct": 83.66015458084442,
+        "significant_no_overlap": false,
+        "p_holm_bonferroni": 1.0,
+        "significant_hb_alpha05": false
+      },
+      {
+        "pair": "bm25_vs_cosine",
+        "diff": 0.007762222222222226,
+        "ci_lo": -0.023284652777777772,
+        "ci_hi": 0.0394426388888889,
+        "p_raw": 0.6158,
+        "cohen_d": 0.05037943469394657,
+        "hedges_g": 0.05027381743043725,
+        "ci_overlap_pct": 82.7952819719961,
+        "significant_no_overlap": false,
+        "p_holm_bonferroni": 1.0,
+        "significant_hb_alpha05": false
+      }
+    ],
+    "method_bootstrap_ci": {
+      "cosine": {
+        "mean": 0.20552055555555557,
+        "ci_lo": 0.1839486805555556,
+        "ci_hi": 0.22771308333333332
+      },
+      "bm25": {
+        "mean": 0.2132827777777778,
+        "ci_lo": 0.19082180555555556,
+        "ci_hi": 0.2361718472222222
+      },
+      "tf_isf": {
+        "mean": 0.22058055555555559,
+        "ci_lo": 0.19797995833333334,
+        "ci_hi": 0.243932375
+      }
+    },
+    "descriptive_stats_f1": {
+      "cosine": {
+        "n": 180,
+        "mean": 0.20552055555555557,
+        "std": 0.1520497061836281,
+        "min": 0.0,
+        "q25": 0.0952,
+        "median": 0.1856,
+        "q75": 0.30462500000000003,
+        "max": 0.7619
+      },
+      "bm25": {
+        "n": 180,
+        "mean": 0.2132827777777778,
+        "std": 0.15607443891893685,
+        "min": 0.0,
+        "q25": 0.1111,
+        "median": 0.1835,
+        "q75": 0.293775,
+        "max": 0.7619
+      },
+      "tf_isf": {
+        "n": 180,
+        "mean": 0.22058055555555559,
+        "std": 0.15692156390237363,
+        "min": 0.0,
+        "q25": 0.111925,
+        "median": 0.19290000000000002,
+        "q75": 0.30855,
+        "max": 0.7619
+      }
+    },
+    "descriptive_stats_recall": {
+      "cosine": {
+        "n": 180,
+        "mean": 0.15379555555555555,
+        "std": 0.30673550155320695,
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0,
+        "q75": 0.1667,
+        "max": 1.0
+      },
+      "bm25": {
+        "n": 180,
+        "mean": 0.10638888888888888,
+        "std": 0.25109440786995435,
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0,
+        "q75": 0.0,
+        "max": 1.0
+      },
+      "tf_isf": {
+        "n": 180,
+        "mean": 0.09805555555555555,
+        "std": 0.24737112534836037,
+        "min": 0.0,
+        "q25": 0.0,
+        "median": 0.0,
+        "q75": 0.0,
+        "max": 1.0
+      }
+    },
+    "hallucination_rates": {
+      "cosine": {
+        "count": 112,
+        "rate_pct": 62.22222222222222
+      },
+      "bm25": {
+        "count": 126,
+        "rate_pct": 70.0
+      },
+      "tf_isf": {
+        "count": 129,
+        "rate_pct": 71.66666666666667
+      }
+    },
+    "subgroup_by_section_type": {
+      "Abstract": {
+        "n": 2,
+        "means": {
+          "cosine": 0.185,
+          "bm25": 0.2129,
+          "tf_isf": 0.1282
+        },
+        "best_method": "bm25",
+        "pairwise": [
+          {
+            "pair": "tf_isf_vs_cosine",
+            "diff": -0.05679999999999999,
+            "note": "too_few_for_bootstrap"
+          },
+          {
+            "pair": "tf_isf_vs_bm25",
+            "diff": -0.0847,
+            "note": "too_few_for_bootstrap"
+          },
+          {
+            "pair": "bm25_vs_cosine",
+            "diff": 0.027900000000000008,
+            "note": "too_few_for_bootstrap"
+          }
+        ]
+      },
+      "Method": {
+        "n": 33,
+        "means": {
+          "cosine": 0.21171212121212118,
+          "bm25": 0.2704484848484848,
+          "tf_isf": 0.23873333333333333
+        },
+        "best_method": "bm25",
+        "pairwise": [
+          {
+            "pair": "tf_isf_vs_cosine",
+            "diff": 0.02702121212121214,
+            "ci_lo": -0.04406704545454543,
+            "ci_hi": 0.0981356818181818,
+            "p_raw": 0.4578
+          },
+          {
+            "pair": "tf_isf_vs_bm25",
+            "diff": -0.0317151515151515,
+            "ci_lo": -0.10431901515151513,
+            "ci_hi": 0.03975053030303029,
+            "p_raw": 0.3974
+          },
+          {
+            "pair": "bm25_vs_cosine",
+            "diff": 0.05873636363636364,
+            "ci_lo": -0.015482878787878832,
+            "ci_hi": 0.13250795454545453,
+            "p_raw": 0.1146
+          }
+        ]
+      },
+      "Related": {
+        "n": 4,
+        "means": {
+          "cosine": 0.268925,
+          "bm25": 0.187025,
+          "tf_isf": 0.22997499999999998
+        },
+        "best_method": "cosine",
+        "pairwise": [
+          {
+            "pair": "tf_isf_vs_cosine",
+            "diff": -0.03895000000000004,
+            "note": "too_few_for_bootstrap"
+          },
+          {
+            "pair": "tf_isf_vs_bm25",
+            "diff": 0.04294999999999999,
+            "note": "too_few_for_bootstrap"
+          },
+          {
+            "pair": "bm25_vs_cosine",
+            "diff": -0.08190000000000003,
+            "note": "too_few_for_bootstrap"
+          }
+        ]
+      },
+      "Result": {
+        "n": 40,
+        "means": {
+          "cosine": 0.1851425,
+          "bm25": 0.16353499999999999,
+          "tf_isf": 0.1970825
+        },
+        "best_method": "tf_isf",
+        "pairwise": [
+          {
+            "pair": "tf_isf_vs_cosine",
+            "diff": 0.011940000000000006,
+            "ci_lo": -0.04891918749999992,
+            "ci_hi": 0.07404799999999996,
+            "p_raw": 0.7176
+          },
+          {
+            "pair": "tf_isf_vs_bm25",
+            "diff": 0.03354750000000001,
+            "ci_lo": -0.023530999999999986,
+            "ci_hi": 0.09123824999999997,
+            "p_raw": 0.2532
+          },
+          {
+            "pair": "bm25_vs_cosine",
+            "diff": -0.0216075,
+            "ci_lo": -0.07992199999999998,
+            "ci_hi": 0.0358300625,
+            "p_raw": 0.4678
+          }
+        ]
+      },
+      "Unknown": {
+        "n": 100,
+        "means": {
+          "cosine": 0.208154,
+          "bm25": 0.21470800000000004,
+          "tf_isf": 0.226129
+        },
+        "best_method": "tf_isf",
+        "pairwise": [
+          {
+            "pair": "tf_isf_vs_cosine",
+            "diff": 0.01797499999999999,
+            "ci_lo": -0.026771700000000037,
+            "ci_hi": 0.06430539999999997,
+            "p_raw": 0.4338
+          },
+          {
+            "pair": "tf_isf_vs_bm25",
+            "diff": 0.011420999999999959,
+            "ci_lo": -0.034555974999999885,
+            "ci_hi": 0.057162574999999986,
+            "p_raw": 0.6084
+          },
+          {
+            "pair": "bm25_vs_cosine",
+            "diff": 0.006554000000000032,
+            "ci_lo": -0.03854632500000001,
+            "ci_hi": 0.051806349999999945,
+            "p_raw": 0.7956
+          }
+        ]
+      }
+    },
+    "section_type_counts": {
+      "Unknown": 100,
+      "Method": 33,
+      "Result": 40,
+      "Related": 4,
+      "Introduction": 1,
+      "Abstract": 2
+    },
+    "kruskal_wallis": {
+      "H_statistic": 0.7533973980568175,
+      "p_value": 0.6861227722131532,
+      "eta_squared_approx": -0.002321420115350433,
+      "interpretation": "Kruskal-Wallis tests whether F1 distributions differ across methods. eta_squared approximates % variance explained by method choice."
+    },
+    "reliability_assessment": {
+      "score": "low",
+      "notes": [
+        "sample_size=180 (adequate)",
+        "mean_CI_width=0.0450 (wide)",
+        "no_pairs_significant_after_HB_correction"
+      ],
+      "recommendation": "The iter_1 experiment (n=180, free LLM) is the ONLY available result. Holm-Bonferroni corrected tests indicate whether TF-ISF improvements are statistically significant. Effect sizes (Hedges' g) quant..."
+    }
+  },
+  "metrics_agg": {
+    "n_examples": 180.0,
+    "n_methods": 3.0,
+    "cosine_mean_f1": 0.20552055555555557,
+    "bm25_mean_f1": 0.2132827777777778,
+    "tf_isf_mean_f1": 0.22058055555555559,
+    "best_method_f1": 0.22058055555555559,
+    "tf_isf_vs_cosine_diff": 0.015060000000000018,
+    "tf_isf_vs_bm25_diff": 0.007297777777777792,
+    "bm25_vs_cosine_diff": 0.007762222222222226,
+    "tf_isf_vs_cosine_hedges_g": 0.09726833022622519,
+    "tf_isf_vs_bm25_hedges_g": 0.046533832477872815,
+    "bm25_vs_cosine_hedges_g": 0.05027381743043725,
+    "tf_isf_vs_cosine_p_hb": 1.0,
+    "tf_isf_vs_bm25_p_hb": 1.0,
+    "bm25_vs_cosine_p_hb": 1.0,
+    "kruskal_wallis_H": 0.7533973980568175,
+    "kruskal_wallis_p": 0.6861227722131532,
+    "kruskal_wallis_eta2": -0.002321420115350433,
+    "cosine_halluc_rate_pct": 62.22222222222222,
+    "bm25_halluc_rate_pct": 70.0,
+    "tf_isf_halluc_rate_pct": 71.66666666666667,
+    "cosine_mean_recall": 0.15379555555555555,
+    "bm25_mean_recall": 0.10638888888888888,
+    "tf_isf_mean_recall": 0.09805555555555555,
+    "cosine_ci_width": 0.04376440277777771,
+    "bm25_ci_width": 0.045350041666666646,
+    "tf_isf_ci_width": 0.04595241666666666
+  },
+  "datasets": [
+    {
+      "dataset": "QASPER",
+      "examples": [
+        {
+          "input": "a vocabulary of positive and negative predicates that helps determine the polarity score of an event",
+          "output": "a vocabulary of positive and negative predicates that helps determine the polarity score of an event",
+          "metadata_gold_section_type": "Unknown",
+          "predict_cosine": "The seed lexicon is a reference lexicon used to match events and assign reference scores during training, where it may match the latter (but not former) event in automatically labeled pairs or match n...",
+          "predict_bm25": "The seed lexicon is a very small set of positive and negative predicates used to assign polarity scores (+1 or -1) to extracted events that match it and lack complex phenomena like negation.",
+          "predict_tf_isf": "The seed lexicon is a very small lexicon consisting of positive and negative predicates used to assign polarity scores (+1 or -1) to extracted events that match it and lack complex phenomena like nega...",
+          "eval_f1_cosine": 0.1739,
+          "eval_f1_bm25": 0.4,
+          "eval_f1_tf_isf": 0.4,
+          "eval_recall_cosine": 0.0,
+          "eval_recall_bm25": 0.0,
+          "eval_recall_tf_isf": 0.0,
+          "eval_tf_isf_beats_cosine": 1.0,
+          "eval_tf_isf_beats_bm25": 0.0,
+          "eval_halluc_cosine": 1.0,
+          "eval_halluc_bm25": 1.0,
+          "eval_halluc_tf_isf": 1.0
+        },
+        {
+          "input": "Using all data to train: AL -- BiGRU achieved 0.843 accuracy, AL -- BERT achieved 0.863 accuracy, AL+CA+CO -- BiGRU achieved 0.866 accuracy, AL+CA+CO -- BERT achieved 0.835, accuracy, ACP -- BiGRU ach",
+          "output": "Using all data to train: AL -- BiGRU achieved 0.843 accuracy, AL -- BERT achieved 0.863 accuracy, AL+CA+CO -- BiGRU achieved 0.866 accuracy, AL+CA+CO -- BERT achieved 0.835, accuracy, ACP -- BiGRU ach...",
+          "metadata_gold_section_type": "Unknown",
+          "predict_cosine": "Models using discourse relation-based label propagation performed close to (within 7% of) semi-supervised counterparts, with BiGRU+AL+CA+CO achieving the highest accuracy; supervised ACP outperformed ...",
+          "predict_bm25": "The discourse relation-based label propagation models performed considerably better than random baselines and within 7% of semi-supervised counterparts, with the BiGRU encoder on AL+CA+CO achieving th...",
+          "predict_tf_isf": "The discourse relation-based label propagation models performed considerably better than random baselines and within 7% of semi-supervised counterparts, with the BiGRU encoder on AL+CA+CO achieving th...",
+          "eval_f1_cosine": 0.2564,
+          "eval_f1_bm25": 0.1446,
+          "eval_f1_tf_isf": 0.1389,
+          "eval_recall_cosine": 0.0,
+          "eval_recall_bm25": 0.0,
+          "eval_recall_tf_isf": 0.0,
+          "eval_tf_isf_beats_cosine": 0.0,
+          "eval_tf_isf_beats_bm25": 0.0,
+          "eval_halluc_cosine": 1.0,
+          "eval_halluc_bm25": 1.0,
+          "eval_halluc_tf_isf": 1.0
+        },
+        {
+          "input": "based on the relation between events, the suggested polarity of one event can determine the possible polarity of the other event ",
+          "output": "based on the relation between events, the suggested polarity of one event can determine the possible polarity of the other event ",
+          "metadata_gold_section_type": "Method",
+          "predict_cosine": "Discourse relations are used to propagate polarities of affective events from seeds, linking event pairs so that polarity is transferred through those relations.",
+          "predict_bm25": "Discourse relations (e.g., Cause, Concession) are used to propagate polarity from seed predicates to related events—same polarity for Cause and reverse for Concession—by exploiting how linked events t...",
+          "predict_tf_isf": "Discourse relations (e.g., Cause, Concession) are used to propagate polarity from seed events to related events—same polarity for Cause and reverse for Concession—based on how events are linked in a r...",
+          "eval_f1_cosine": 0.2162,
+          "eval_f1_bm25": 0.2439,
+          "eval_f1_tf_isf": 0.3077,
+          "eval_recall_cosine": 0.0,
+          "eval_recall_bm25": 0.0,
+          "eval_recall_tf_isf": 0.0,
+          "eval_tf_isf_beats_cosine": 1.0,
+          "eval_tf_isf_beats_bm25": 1.0,
+          "eval_halluc_cosine": 1.0,
+          "eval_halluc_bm25": 1.0,
+          "eval_halluc_tf_isf": 1.0
+        }
+      ]
+    }
+  ]
+}

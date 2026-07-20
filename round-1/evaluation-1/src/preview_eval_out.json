@@ -1,0 +1,351 @@
+{
+  "metadata": {
+    "evaluation_name": "TF-ISF Section Ranking Statistical Evaluation",
+    "dataset": "QASPER (allenai/qasper)",
+    "n_questions": 200,
+    "top_k": 3,
+    "n_bootstrap": 10000,
+    "llm_model": "meta-llama/llama-3.2-3b-instruct",
+    "llm_cost_usd": 0.013547,
+    "method_stats": {
+      "cosine": {
+        "f1_mean": 0.19783965818667856,
+        "f1_ci_lo": 0.17372480138598628,
+        "f1_ci_hi": 0.22266162766971628,
+        "recall_mean": 0.4670833333333333,
+        "recall_ci_lo": 0.4025,
+        "recall_ci_hi": 0.5308333333333333,
+        "n": 200
+      },
+      "bm25": {
+        "f1_mean": 0.17943030921190728,
+        "f1_ci_lo": 0.1570596263921405,
+        "f1_ci_hi": 0.20233361507585293,
+        "recall_mean": 0.5254166666666668,
+        "recall_ci_lo": 0.4616666666666667,
+        "recall_ci_hi": 0.5895833333333333,
+        "n": 200
+      },
+      "tfisf": {
+        "f1_mean": 0.18723259239603485,
+        "f1_ci_lo": 0.16307368736950098,
+        "f1_ci_hi": 0.21263805432113883,
+        "recall_mean": 0.48375,
+        "recall_ci_lo": 0.4183333333333333,
+        "recall_ci_hi": 0.5483333333333333,
+        "n": 200
+      }
+    },
+    "statistical_comparisons": [
+      {
+        "comparison": "tfisf_vs_cosine_f1",
+        "t_stat": -0.8093089953163651,
+        "p_val": 0.4193040238382599,
+        "cohens_d": -0.05953934323092006,
+        "rank_biserial": -0.11712289706301682,
+        "delta_mean": -0.010607065790643716,
+        "p_val_holm": 0.6826496166896366
+      },
+      {
+        "comparison": "tfisf_vs_bm25_f1",
+        "t_stat": 0.8933845873419427,
+        "p_val": 0.3727303794442846,
+        "cohens_d": 0.04549779110714275,
+        "rank_biserial": 0.0778371954842543,
+        "delta_mean": 0.0078022831841275675,
+        "p_val_holm": 0.6826496166896366
+      },
+      {
+        "comparison": "tfisf_vs_cosine_recall",
+        "t_stat": 0.4094502859285963,
+        "p_val": 0.6826496166896366,
+        "cohens_d": 0.035989396626186373,
+        "rank_biserial": 0.06491885143570537,
+        "delta_mean": 0.01666666666666672,
+        "p_val_holm": 0.6826496166896366
+      }
+    ],
+    "subgroup_analysis": {
+      "Abstract_Intro": {
+        "cosine": {
+          "n": 31,
+          "f1_mean": 0.19225239200516062,
+          "f1_ci_lo": 0.13575167833302296,
+          "f1_ci_hi": 0.2531353788250933,
+          "recall_mean": 0.3225806451612903,
+          "recall_ci_lo": 0.1935483870967742,
+          "recall_ci_hi": 0.46774193548387094
+        },
+        "bm25": {
+          "n": 31,
+          "f1_mean": 0.17028545775352805,
+          "f1_ci_lo": 0.11790606763259989,
+          "f1_ci_hi": 0.2280392903312345,
+          "recall_mean": 0.6021505376344085,
+          "recall_ci_lo": 0.45161290322580644,
+          "recall_ci_hi": 0.7473118279569892
+        },
+        "tfisf": {
+          "n": 31,
+          "f1_mean": 0.1581471879342497,
+          "f1_ci_lo": 0.111274159426248,
+          "f1_ci_hi": 0.20884518237980854,
+          "recall_mean": 0.553763440860215,
+          "recall_ci_lo": 0.4032258064516129,
+          "recall_ci_hi": 0.7043010752688171
+        }
+      },
+      "Methods_Results": {
+        "cosine": {
+          "n": 137,
+          "f1_mean": 0.20803501505082325,
+          "f1_ci_lo": 0.17783976288156833,
+          "f1_ci_hi": 0.23949968141130254,
+          "recall_mean": 0.49026763990267636,
+          "recall_ci_lo": 0.4148418491484185,
+          "recall_ci_hi": 0.5669099756690997
+        },
+        "bm25": {
+          "n": 137,
+          "f1_mean": 0.18486313873185503,
+          "f1_ci_lo": 0.15740655739739667,
+          "f1_ci_hi": 0.21371933609335225,
+          "recall_mean": 0.5097323600973236,
+          "recall_ci_lo": 0.4343065693430657,
+          "recall_ci_hi": 0.5863746958637469
+        },
+        "tfisf": {
+          "n": 137,
+          "f1_mean": 0.2010343912466824,
+          "f1_ci_lo": 0.17077192112406933,
+          "f1_ci_hi": 0.23260225104092205,
+          "recall_mean": 0.4927007299270073,
+          "recall_ci_lo": 0.4184914841849149,
+          "recall_ci_hi": 0.5681265206812652
+        }
+      },
+      "Discussion_Conclusion": {
+        "cosine": {
+          "n": 12,
+          "f1_mean": 0.192019189976002,
+          "f1_ci_lo": 0.11567375617958783,
+          "f1_ci_hi": 0.2785950978339205,
+          "recall_mean": 0.2638888888888889,
+          "recall_ci_lo": 0.08333333333333333,
+          "recall_ci_hi": 0.4583333333333333
+        },
+        "bm25": {
+          "n": 12,
+          "f1_mean": 0.15581150482674294,
+          "f1_ci_lo": 0.10214637623935842,
+          "f1_ci_hi": 0.21092590031902375,
+          "recall_mean": 0.3333333333333333,
+          "recall_ci_lo": 0.125,
+          "recall_ci_hi": 0.5555555555555556
+        },
+        "tfisf": {
+          "n": 12,
+          "f1_mean": 0.1336416356875783,
+          "f1_ci_lo": 0.08137107088652572,
+          "f1_ci_hi": 0.18982230489416213,
+          "recall_mean": 0.375,
+          "recall_ci_lo": 0.15277777777777776,
+          "recall_ci_hi": 0.625
+        }
+      },
+      "Other": {
+        "cosine": {
+          "n": 53,
+          "f1_mean": 0.19259171017242868,
+          "f1_ci_lo": 0.1519185406490296,
+          "f1_ci_hi": 0.23547105272293198,
+          "recall_mean": 0.47955974842767296,
+          "recall_ci_lo": 0.3632075471698113,
+          "recall_ci_hi": 0.5959512578616347
+        },
+        "bm25": {
+          "n": 53,
+          "f1_mean": 0.18094651945298376,
+          "f1_ci_lo": 0.14022582379274062,
+          "f1_ci_hi": 0.22759560199724607,
+          "recall_mean": 0.48899371069182385,
+          "recall_ci_lo": 0.37264150943396224,
+          "recall_ci_hi": 0.6037735849056604
+        },
+        "tfisf": {
+          "n": 53,
+          "f1_mean": 0.17219509957076132,
+          "f1_ci_lo": 0.13167417293384567,
+          "f1_ci_hi": 0.21809087868681365,
+          "recall_mean": 0.37893081761006286,
+          "recall_ci_lo": 0.26572327044025157,
+          "recall_ci_hi": 0.4968553459119497
+        }
+      }
+    },
+    "isf_diagnostics": {
+      "Introduction": {
+        "n": 149,
+        "mean": 1.335137046613053,
+        "median": 1.4150586298559855,
+        "std": 0.2745040049509633
+      },
+      "Related Work": {
+        "n": 147,
+        "mean": 1.3273457725655533,
+        "median": 1.3607299977062381,
+        "std": 0.26021357634423
+      },
+      "Methods": {
+        "n": 839,
+        "mean": 1.2274688346834328,
+        "median": 1.2371054283623601,
+        "std": 0.22403040580851677
+      },
+      "Conclusion": {
+        "n": 130,
+        "mean": 1.1272384848307613,
+        "median": 1.1536096230650001,
+        "std": 0.23461801590762346
+      },
+      "Other": {
+        "n": 531,
+        "mean": 1.3255032301085785,
+        "median": 1.324320897387948,
+        "std": 0.26493417180094053
+      },
+      "Results": {
+        "n": 161,
+        "mean": 1.2433919647782274,
+        "median": 1.2341336570372103,
+        "std": 0.20799233022973415
+      },
+      "Discussion": {
+        "n": 33,
+        "mean": 1.2468341103254952,
+        "median": 1.3139204513813478,
+        "std": 0.16069706470328202
+      }
+    },
+    "baselines": [
+      "cosine_similarity (all-MiniLM-L6-v2)",
+      "BM25Okapi"
+    ],
+    "main_method": "TF-ISF (Inverse Section Frequency)"
+  },
+  "metrics_agg": {
+    "cosine_f1": 0.19783965818667856,
+    "cosine_recall_at_3": 0.4670833333333333,
+    "bm25_f1": 0.17943030921190728,
+    "bm25_recall_at_3": 0.5254166666666668,
+    "tfisf_f1": 0.18723259239603485,
+    "tfisf_recall_at_3": 0.48375,
+    "delta_tfisf_vs_cosine_f1": -0.010607065790643716,
+    "pval_tfisf_vs_cosine_f1": 0.4193040238382599,
+    "delta_tfisf_vs_bm25_f1": 0.0078022831841275675,
+    "pval_tfisf_vs_bm25_f1": 0.3727303794442846,
+    "delta_tfisf_vs_cosine_recall": 0.01666666666666672,
+    "pval_tfisf_vs_cosine_recall": 0.6826496166896366,
+    "delta_tfisf_vs_bm25_recall": -0.04166666666666674,
+    "pval_tfisf_vs_bm25_recall": 0.15781883619217799,
+    "delta_cosine_vs_bm25_f1": 0.018409348974771284,
+    "pval_cosine_vs_bm25_f1": 0.15270797977520878,
+    "delta_cosine_vs_bm25_recall": -0.05833333333333346,
+    "pval_cosine_vs_bm25_recall": 0.14990203277148734,
+    "sg_Abstract_Intro_cosine_f1": 0.19225239200516062,
+    "sg_Abstract_Intro_cosine_recall": 0.3225806451612903,
+    "sg_Abstract_Intro_bm25_f1": 0.17028545775352805,
+    "sg_Abstract_Intro_bm25_recall": 0.6021505376344085,
+    "sg_Abstract_Intro_tfisf_f1": 0.1581471879342497,
+    "sg_Abstract_Intro_tfisf_recall": 0.553763440860215,
+    "sg_Methods_Results_cosine_f1": 0.20803501505082325,
+    "sg_Methods_Results_cosine_recall": 0.49026763990267636,
+    "sg_Methods_Results_bm25_f1": 0.18486313873185503,
+    "sg_Methods_Results_bm25_recall": 0.5097323600973236,
+    "sg_Methods_Results_tfisf_f1": 0.2010343912466824,
+    "sg_Methods_Results_tfisf_recall": 0.4927007299270073,
+    "sg_Discussion_Conclusion_cosine_f1": 0.192019189976002,
+    "sg_Discussion_Conclusion_cosine_recall": 0.2638888888888889,
+    "sg_Discussion_Conclusion_bm25_f1": 0.15581150482674294,
+    "sg_Discussion_Conclusion_bm25_recall": 0.3333333333333333,
+    "sg_Discussion_Conclusion_tfisf_f1": 0.1336416356875783,
+    "sg_Discussion_Conclusion_tfisf_recall": 0.375,
+    "sg_Other_cosine_f1": 0.19259171017242868,
+    "sg_Other_cosine_recall": 0.47955974842767296,
+    "sg_Other_bm25_f1": 0.18094651945298376,
+    "sg_Other_bm25_recall": 0.48899371069182385,
+    "sg_Other_tfisf_f1": 0.17219509957076132,
+    "sg_Other_tfisf_recall": 0.37893081761006286,
+    "isf_mean_Introduction": 1.335137046613053,
+    "isf_mean_Related_Work": 1.3273457725655533,
+    "isf_mean_Methods": 1.2274688346834328,
+    "isf_mean_Conclusion": 1.1272384848307613,
+    "isf_mean_Other": 1.3255032301085785,
+    "isf_mean_Results": 1.2433919647782274,
+    "isf_mean_Discussion": 1.2468341103254952
+  },
+  "datasets": [
+    {
+      "dataset": "QASPER",
+      "examples": [
+        {
+          "input": "What is the seed lexicon?",
+          "output": "a vocabulary of positive and negative predicates that helps determine the polarity score of an event",
+          "predict_cosine": "The seed lexicon is a set of labeled pairs of events that are used as reference scores during training for the Discourse Relation-Based Event Pairs methods, with specific conditions for Cause and Conc...",
+          "predict_bm25": "The seed lexicon is a set of manually curated matches between two events, where one event is labeled and the other is not, and their discourse relation type is either Cause or Concession. The seed lex...",
+          "predict_tfisf": "The seed lexicon is a set of pre-labeled event pairs used as references for training the event-based models, which are then fine-tuned to learn from the labeled data.",
+          "eval_f1_cosine": 0.27450980392156865,
+          "eval_f1_bm25": 0.15625,
+          "eval_f1_tfisf": 0.1702127659574468,
+          "eval_recall_cosine": 0.0,
+          "eval_recall_bm25": 0.0,
+          "eval_recall_tfisf": 0.0,
+          "metadata_paper_id": "1909.00694",
+          "metadata_gold_section_types": "[\"Methods\"]",
+          "metadata_gold_sections": "[\"Proposed Method ::: Discourse Relation-Based Event Pairs\"]",
+          "metadata_retrieved_tfisf": "[\"Proposed Method ::: Discourse Relation-Based Event Pairs ::: CO (Concession Pairs)\", \"Proposed Method ::: Discourse Relation-Based Event Pairs ::: CA (Cause Pairs)\", \"Proposed Method ::: Discourse R...",
+          "metadata_retrieved_cosine": "[\"Proposed Method ::: Discourse Relation-Based Event Pairs ::: AL (Automatically Labeled Pairs)\", \"Proposed Method ::: Discourse Relation-Based Event Pairs ::: CA (Cause Pairs)\", \"Proposed Method ::: ...",
+          "metadata_retrieved_bm25": "[\"Experiments ::: Dataset ::: AL, CA, and CO\", \"Proposed Method ::: Discourse Relation-Based Event Pairs ::: AL (Automatically Labeled Pairs)\", \"Related Work\"]"
+        },
+        {
+          "input": "What are the results?",
+          "output": "Using all data to train: AL -- BiGRU achieved 0.843 accuracy, AL -- BERT achieved 0.863 accuracy, AL+CA+CO -- BiGRU achieved 0.866 accuracy, AL+CA+CO -- BERT achieved 0.835, accuracy, ACP -- BiGRU ach...",
+          "predict_cosine": "The models in the top block performed considerably better than the random baselines. The performance gaps with their (semi-) supervised baselines were not significant.",
+          "predict_bm25": "The results are shown in Table TABREF23, which shows accuracy, but the specific accuracy values are not provided in the given text.",
+          "predict_tfisf": "The results of the proposed method are not explicitly stated in the provided context. However, it can be inferred that the method successfully optimizes the parameters of the polarity function p(x) us...",
+          "eval_f1_cosine": 0.0,
+          "eval_f1_bm25": 0.03921568627450981,
+          "eval_f1_tfisf": 0.08571428571428572,
+          "eval_recall_cosine": 0.0,
+          "eval_recall_bm25": 0.0,
+          "eval_recall_tfisf": 0.0,
+          "metadata_paper_id": "1909.00694",
+          "metadata_gold_section_types": "[\"Methods\"]",
+          "metadata_gold_sections": "[\"Experiments ::: Model Configurations\"]",
+          "metadata_retrieved_tfisf": "[\"Proposed Method ::: Loss Functions\", \"Related Work\", \"Proposed Method ::: Discourse Relation-Based Event Pairs ::: AL (Automatically Labeled Pairs)\"]",
+          "metadata_retrieved_cosine": "[\"Experiments ::: Results and Discussion\", \"Proposed Method ::: Loss Functions\", \"Appendices ::: Seed Lexicon ::: Positive Words\"]",
+          "metadata_retrieved_bm25": "[\"Experiments ::: Dataset ::: AL, CA, and CO\", \"Related Work\", \"Experiments ::: Results and Discussion\"]"
+        },
+        {
+          "input": "How are relations used to propagate polarity?",
+          "output": "based on the relation between events, the suggested polarity of one event can determine the possible polarity of the other event",
+          "predict_cosine": "Relations are used to propagate polarities of affective events from seeds, specifically through discourse analysis. This is done to effectively link event pairs and improve the performance of the prop...",
+          "predict_bm25": "Discourse relations are used to propagate the polarity of affective events from seeds, even with minimal supervision. This is done to improve the performance of the method.",
+          "predict_tfisf": "Discourse relations are used to propagate the polarity of affective events from seeds, effectively transferring the polarity from one event to another. This is achieved through a method that leverages...",
+          "eval_f1_cosine": 0.23076923076923075,
+          "eval_f1_bm25": 0.2916666666666667,
+          "eval_f1_tfisf": 0.26865671641791045,
+          "eval_recall_cosine": 0.0,
+          "eval_recall_bm25": 0.5,
+          "eval_recall_tfisf": 0.5,
+          "metadata_paper_id": "1909.00694",
+          "metadata_gold_section_types": "[\"Introduction\", \"Methods\"]",
+          "metadata_gold_sections": "[\"Introduction\", \"Proposed Method ::: Discourse Relation-Based Event Pairs\"]",
+          "metadata_retrieved_tfisf": "[\"Conclusion\", \"Introduction\", \"Related Work\"]",
+          "metadata_retrieved_cosine": "[\"Proposed Method ::: Polarity Function\", \"Conclusion\", \"Proposed Method ::: Loss Functions\"]",
+          "metadata_retrieved_bm25": "[\"Conclusion\", \"Introduction\", \"Related Work\"]"
+        }
+      ]
+    }
+  ]
+}
