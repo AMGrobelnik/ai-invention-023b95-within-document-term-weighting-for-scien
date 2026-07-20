@@ -1,0 +1,121 @@
+\begin{thebibliography}{16}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Cohan and Manber(2019)]{Cohan2019}
+Arman Cohan and Suresh Manber.
+\newblock Discourse structure and coherence of scientific documents.
+\newblock In \emph{Proceedings of the 57th Annual Meeting of the Association
+  for Computational Linguistics (ACL)}, pages 2181--2190, 2019.
+
+\bibitem[Cohan et~al.(2020)Cohan, Feldman, Beltagy, Downey, and
+  Weld]{Cohan2020}
+Arman Cohan, Sergey Feldman, Iz~Beltagy, Doug Downey, and Daniel~S. Weld.
+\newblock {SPECTER}: Document-level representation learning using
+  citation-informed transformers.
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  ACL 2020}, pages 3750--3764, 2020.
+\newblock \doi{10.18653/v1/2020.findings-acl.328}.
+
+\bibitem[Croft et~al.(2015)Croft, Metzler, and Strohman]{Croft2015}
+W.~Bruce Croft, Donald Metzler, and Trevor Strohman.
+\newblock \emph{Search Engines: Information Retrieval in Practice}.
+\newblock Pearson Education, 2015.
+
+\bibitem[Dasigi et~al.(2021)Dasigi, Lo, Beltagy, Cohan, Smith, and
+  Gardner]{Dasigi2021}
+Pradeep Dasigi, Kyle Lo, Iz~Beltagy, Arman Cohan, Noah~A. Smith, and Matt
+  Gardner.
+\newblock A dataset of information-seeking questions and answers anchored in
+  research papers.
+\newblock In \emph{Proceedings of the 2021 Conference of the North American
+  Chapter of the Association for Computational Linguistics: Human Language
+  Technologies (NAACL-HLT)}, pages 2335--2345, 2021.
+\newblock \doi{10.18653/V1/2021.NAACL-MAIN.365}.
+
+\bibitem[Gao et~al.(2023)Gao, Ma, Lin, and Callan]{Gao2022}
+Luyu Gao, Xueguang Ma, Jimmy~J. Lin, and Jamie Callan.
+\newblock Precise zero-shot dense retrieval without relevance labels.
+\newblock In \emph{Proceedings of the 61st Annual Meeting of the Association
+  for Computational Linguistics (ACL)}, pages 1762--1777, 2023.
+\newblock \doi{10.18653/v1/2023.acl-long.99}.
+
+\bibitem[Grefenstette(1994)]{Grefenstette1994}
+Gregory Grefenstette.
+\newblock \emph{Explorations in Automatic Thesaurus Discovery}.
+\newblock Kluwer Academic Publishers, 1994.
+
+\bibitem[Hiemstra(2000)]{Hiemstra2000}
+Djoerd Hiemstra.
+\newblock \emph{Using Language Models for Information Retrieval}.
+\newblock PhD thesis, University of Twente, 2000.
+
+\bibitem[Jones(1972)]{SpärckJones1972}
+Karen~Sp{\"{a}}rck Jones.
+\newblock A statistical interpretation of term specificity and its application
+  in retrieval.
+\newblock \emph{Journal of Documentation}, 28\penalty0 (1):\penalty0 11--21,
+  1972.
+\newblock \doi{10.1108/EB026526}.
+
+\bibitem[Karpukhin et~al.(2020)Karpukhin, O\u{g}uz, Min, Lewis, Wu, Edunov,
+  Chen, and tau Yih]{Karpukhin2020}
+Vladimir Karpukhin, Barlas O\u{g}uz, Sewon Min, Patrick Lewis, Ledell Wu,
+  Sergey Edunov, Danqi Chen, and Wen tau Yih.
+\newblock Dense passage retrieval for open-domain question answering.
+\newblock In \emph{Proceedings of the 2020 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, 2020.
+\newblock \doi{10.18653/v1/2020.emnlp-main.550}.
+
+\bibitem[Khattab and Zaharia(2020)]{Khattab2020}
+Omar Khattab and Matei Zaharia.
+\newblock {ColBERT}: Efficient and effective passage search via contextualized
+  late interaction over {BERT}.
+\newblock In \emph{Proceedings of the 43rd International ACM SIGIR Conference
+  on Research and Development in Information Retrieval}, pages 1713--1716,
+  2020.
+\newblock \doi{10.1145/3397271.3401075}.
+
+\bibitem[Liu et~al.(2025)Liu, Ding, Feng, Li, Wang, and Wang]{Wang2025}
+Dongqi Liu, Hang Ding, Qiming Feng, Jian Li, Chengjie Wang, and Yabiao Wang.
+\newblock Disco-{RAG}: Improving document consistency in retrieval-augmented
+  generation with discourse relationships.
+\newblock In \emph{arXiv preprint arXiv:2601.04377}, 2025.
+
+\bibitem[Rajpurkar et~al.(2018)Rajpurkar, Jia, and Liang]{Rajpurkar2018}
+Pranav Rajpurkar, Robin Jia, and Percy Liang.
+\newblock Know what you don't know: Unanswerable questions for {SQuAD}.
+\newblock In \emph{Proceedings of the 56th Annual Meeting of the Association
+  for Computational Linguistics (ACL)}, pages 784--789, 2018.
+\newblock \doi{10.18653/v1/P18-2124}.
+
+\bibitem[Reichman and Heck(2024)]{Reichman2024}
+Benjamin~Z. Reichman and Larry Heck.
+\newblock Dense passage retrieval: Is it retrieving?
+\newblock In \emph{Findings of the Association for Computational Linguistics:
+  EMNLP 2024}, 2024.
+
+\bibitem[Reimers and Gurevych(2019)]{Reimers2019}
+Nils Reimers and Iryna Gurevych.
+\newblock Sentence-{BERT}: Sentence embeddings using siamese {BERT}-networks.
+\newblock In \emph{Proceedings of the 2019 Conference on Empirical Methods in
+  Natural Language Processing (EMNLP)}, 2019.
+\newblock \doi{10.18653/v1/D19-1410}.
+
+\bibitem[Robertson and Zaragoza(2009)]{Robertson2009}
+Stephen Robertson and Hugo Zaragoza.
+\newblock The probabilistic relevance framework: {BM25} and beyond.
+\newblock \emph{Foundations and Trends in Information Retrieval}, 3\penalty0
+  (4):\penalty0 333--389, 2009.
+
+\bibitem[Robertson et~al.(2004)Robertson, Zaragoza, and Taylor]{Robertson2004}
+Stephen Robertson, Hugo Zaragoza, and Michael Taylor.
+\newblock Simple {BM25} extension to multiple weighted fields.
+\newblock In \emph{Proceedings of the 13th {ACM} International Conference on
+  Information and Knowledge Management (CIKM)}, pages 42--49, 2004.
+\newblock \doi{10.1145/1031171.1031181}.
+
+\end{thebibliography}

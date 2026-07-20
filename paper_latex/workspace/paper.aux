@@ -1,0 +1,90 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{Karpukhin2020}
+\citation{Reichman2024}
+\citation{SpärckJones1972}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{Dasigi2021}
+\citation{Rajpurkar2018}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Conceptual comparison of three retrieval methods. Cosine similarity ranks sections by embedding similarity to the query. BM25 applies probabilistic term weighting with within-document term statistics. TF-ISF applies inverse section frequency to down-weight terms shared across many sections and up-weight section-specific terms. All three operate on the same document-local scope.}}{2}{figure.1}\protected@file@percent }
+\newlabel{fig:method_overview}{{1}{2}{Conceptual comparison of three retrieval methods. Cosine similarity ranks sections by embedding similarity to the query. BM25 applies probabilistic term weighting with within-document term statistics. TF-ISF applies inverse section frequency to down-weight terms shared across many sections and up-weight section-specific terms. All three operate on the same document-local scope}{figure.1}{}}
+\citation{SpärckJones1972}
+\citation{Robertson2009}
+\citation{Hiemstra2000}
+\citation{Robertson2004}
+\citation{Karpukhin2020}
+\citation{Khattab2020}
+\citation{Reichman2024}
+\citation{Dasigi2021}
+\citation{Cohan2019}
+\citation{Cohan2020}
+\citation{Wang2025}
+\citation{Croft2015}
+\citation{Grefenstette1994}
+\citation{Karpukhin2020}
+\citation{Gao2022}
+\citation{Dasigi2021}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{3}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Methods}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Dataset and Task Setup}{3}{subsection.3.1}\protected@file@percent }
+\citation{Reimers2019}
+\citation{Robertson2009}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Retrieval Methods}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Answer Generation and Evaluation}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Statistical Analysis}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Token-level F1 and section recall@3 for all three retrieval methods on 200 QASPER questions (llama-3.2-3b-instruct reader). Error bars show 95\% bootstrap confidence intervals (10,000 resamples). All pairwise differences are non-significant ($p > 0.37$, Holm-corrected). Cosine achieves the highest mean F1 (0.198) while BM25 achieves highest recall (0.525), but differences are within confidence interval overlap.}}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:main_results}{{2}{5}{Token-level F1 and section recall@3 for all three retrieval methods on 200 QASPER questions (llama-3.2-3b-instruct reader). Error bars show 95\% bootstrap confidence intervals (10,000 resamples). All pairwise differences are non-significant ($p > 0.37$, Holm-corrected). Cosine achieves the highest mean F1 (0.198) while BM25 achieves highest recall (0.525), but differences are within confidence interval overlap}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{5}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Primary Evaluation ($n{=}200$, llama-3.2-3b-instruct)}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Subgroup Analysis by Section Type}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces F1 performance stratified by the section type containing the gold answer. Methods/Results ($n{=}137$) is adequately powered; Abstract/Introduction ($n{=}31$) and Discussion/Conclusion ($n{=}12$) are underpowered for strong inference. TF-ISF does not outperform cosine in any subgroup. The Methods/Results subgroup, where TF-ISF was hypothesized to help most, shows no advantage (TF-ISF F1=0.201 vs.\ Cosine F1=0.208, overlapping CIs).}}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:subgroup_analysis}{{3}{6}{F1 performance stratified by the section type containing the gold answer. Methods/Results ($n{=}137$) is adequately powered; Abstract/Introduction ($n{=}31$) and Discussion/Conclusion ($n{=}12$) are underpowered for strong inference. TF-ISF does not outperform cosine in any subgroup. The Methods/Results subgroup, where TF-ISF was hypothesized to help most, shows no advantage (TF-ISF F1=0.201 vs.\ Cosine F1=0.208, overlapping CIs)}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Mechanism Diagnostic: ISF by Section Type}{6}{subsection.4.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Mean Inverse Section Frequency for all terms in each section type (computed on records where gold evidence is Methods/Results, $n{=}139$ records, potentially biased). Methods (1.227) and Results (1.243) have \emph  {lower} ISF than Introduction (1.335), contradicting the hypothesis that evidence sections contain more rare, section-specific vocabulary. This mechanism disconfirmation is a key finding.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:isf_analysis}{{4}{7}{Mean Inverse Section Frequency for all terms in each section type (computed on records where gold evidence is Methods/Results, $n{=}139$ records, potentially biased). Methods (1.227) and Results (1.243) have \emph {lower} ISF than Introduction (1.335), contradicting the hypothesis that evidence sections contain more rare, section-specific vocabulary. This mechanism disconfirmation is a key finding}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Contradictory Earlier Experiment: $n{=}180$, tencent/hy3:free LLM}{7}{subsection.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Two runs with different LLMs and data loading strategies produced contradictory results. Earlier run ($n{=}180$, tencent/hy3:free) showed TF-ISF F1=0.221 $>$ Cosine F1=0.206 (positive result); current run ($n{=}200$, llama-3.2-3b-instruct) shows TF-ISF F1=0.187 $<$ Cosine F1=0.198 (negative result). We argue the $n{=}200$ evaluation is more trustworthy due to larger sample, higher-quality LLM, and rigorous statistics, but the discrepancy highlights fragility in the approach.}}{8}{figure.5}\protected@file@percent }
+\newlabel{fig:contradiction_summary}{{5}{8}{Two runs with different LLMs and data loading strategies produced contradictory results. Earlier run ($n{=}180$, tencent/hy3:free) showed TF-ISF F1=0.221 $>$ Cosine F1=0.206 (positive result); current run ($n{=}200$, llama-3.2-3b-instruct) shows TF-ISF F1=0.187 $<$ Cosine F1=0.198 (negative result). We argue the $n{=}200$ evaluation is more trustworthy due to larger sample, higher-quality LLM, and rigorous statistics, but the discrepancy highlights fragility in the approach}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Comparison of earlier experiment and current evaluation.}}{8}{table.1}\protected@file@percent }
+\newlabel{tab:comparison}{{1}{8}{Comparison of earlier experiment and current evaluation}{table.1}{}}
+\citation{Reichman2024}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.5}Retrieval Quality: Absolute Performance}{9}{subsection.4.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Disconfirmation of the Hypothesis}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Why All Methods Underperform}{9}{subsection.5.2}\protected@file@percent }
+\citation{Wang2025}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Implications for Term-Weighting Approaches}{10}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Limitations}{10}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusion}{10}{section.6}\protected@file@percent }
+\bibstyle{plainnat}
+\bibdata{references}
+\bibcite{Cohan2019}{{1}{2019}{{Cohan and Manber}}{{}}}
+\bibcite{Cohan2020}{{2}{2020}{{Cohan et~al.}}{{Cohan, Feldman, Beltagy, Downey, and Weld}}}
+\bibcite{Croft2015}{{3}{2015}{{Croft et~al.}}{{Croft, Metzler, and Strohman}}}
+\bibcite{Dasigi2021}{{4}{2021}{{Dasigi et~al.}}{{Dasigi, Lo, Beltagy, Cohan, Smith, and Gardner}}}
+\bibcite{Gao2022}{{5}{2023}{{Gao et~al.}}{{Gao, Ma, Lin, and Callan}}}
+\bibcite{Grefenstette1994}{{6}{1994}{{Grefenstette}}{{}}}
+\bibcite{Hiemstra2000}{{7}{2000}{{Hiemstra}}{{}}}
+\bibcite{SpärckJones1972}{{8}{1972}{{Jones}}{{}}}
+\bibcite{Karpukhin2020}{{9}{2020}{{Karpukhin et~al.}}{{Karpukhin, O\u {g}uz, Min, Lewis, Wu, Edunov, Chen, and tau Yih}}}
+\bibcite{Khattab2020}{{10}{2020}{{Khattab and Zaharia}}{{}}}
+\bibcite{Wang2025}{{11}{2025}{{Liu et~al.}}{{Liu, Ding, Feng, Li, Wang, and Wang}}}
+\bibcite{Rajpurkar2018}{{12}{2018}{{Rajpurkar et~al.}}{{Rajpurkar, Jia, and Liang}}}
+\bibcite{Reichman2024}{{13}{2024}{{Reichman and Heck}}{{}}}
+\bibcite{Reimers2019}{{14}{2019}{{Reimers and Gurevych}}{{}}}
+\bibcite{Robertson2009}{{15}{2009}{{Robertson and Zaragoza}}{{}}}
+\bibcite{Robertson2004}{{16}{2004}{{Robertson et~al.}}{{Robertson, Zaragoza, and Taylor}}}
+\gdef \@abspage@last{12}

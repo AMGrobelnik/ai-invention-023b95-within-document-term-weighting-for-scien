@@ -1,0 +1,16 @@
+{
+  "title": "Term Weighting for Scientific Section Retrieval",
+  "summary": "Generated a 12-page publication-ready LaTeX paper titled 'Within-Document Term Weighting for Scientific Section Retrieval: A Negative Result'. The paper includes all 6 sections (Introduction, Related Work, Methods, Results, Discussion, Conclusion) plus Acknowledgments and References. All 5 figures from <available_figures> are included as full-width (figure*) placements: fig_method_overview_v0.jpg (flowchart of 3 retrieval methods), fig_main_results_v0.jpg (F1 and recall bar charts), fig_subgroup_analysis_v0.jpg (4-panel subgroup F1 comparison), fig_isf_analysis_v0.jpg (horizontal bar chart of mean ISF by section type), and fig_contradiction_summary_v0.jpg (n=180 vs n=200 comparison). A comparison table (Table 1) and the TF-ISF equation are also included. The references.bib file contains 16 bibliography entries fetched via aii_semscholar_bib__fetch and manually written for failed lookups (Sparck Jones 1972, Robertson 2009/2004, Hiemstra 2000, Reichman 2024, Cohan 2019, Croft 2015, Grefenstette 1994). Footnote URLs pointing to GitHub code repositories are preserved with \\url{} and hyperref. The paper compiled successfully to paper.pdf (12 pages, ~7.3MB) with all citations resolved. Visual review confirmed clean layout, proper figure placement, readable text, and correct rendering across all 12 pages. One minor fix applied: the > character in a figure caption was changed to $>$ to prevent font encoding artifact.",
+  "out_expected_files": {
+    "paper_tex_path": "paper.tex",
+    "paper_pdf_path": "paper.pdf",
+    "references_bib_path": "references.bib",
+    "figure_paths": [
+      "figures/fig_method_overview_v0.jpg",
+      "figures/fig_main_results_v0.jpg",
+      "figures/fig_subgroup_analysis_v0.jpg",
+      "figures/fig_isf_analysis_v0.jpg",
+      "figures/fig_contradiction_summary_v0.jpg"
+    ]
+  }
+}
