@@ -1,0 +1,69 @@
+{
+  "metadata": {
+    "evaluation_name": "TF-ISF vs BM25 vs Cosine — Comprehensive Evaluation",
+    "experiment": "iter_1 (n=180, tencent/hy3:free)",
+    "note": "Only one experiment available (iter_1, n=180). Artifact plan references a second experiment (n=200) which has not been executed yet. All metrics computed on the single available experiment.",
+    "n_bootstrap": 10000,
+    "random_seed": 42,
+    "llm_model": "tencent/hy3:free",
+    "methods": ["cosine", "bm25", "tf_isf"]
+  },
+  "datasets": [
+    {
+      "dataset": "QASPER",
+      "examples": [
+        {
+          "input": "a vocabulary of positive and negative predicates that helps determine the polarity score of an event",
+          "output": "a vocabulary of positive and negative predicates that helps determine the polarity score of an event",
+          "metadata_gold_section_type": "Unknown",
+          "predict_cosine": "The seed lexicon is a reference lexicon used to match events and assign reference scores during training, where it may match the latter (but not former) event in automatically labeled pairs or match neither event in cause/concession pairs.",
+          "predict_bm25": "The seed lexicon is a very small set of positive and negative predicates used to assign polarity scores (+1 or -1) to extracted events that match it and lack complex phenomena like negation.",
+          "predict_tf_isf": "The seed lexicon is a very small lexicon consisting of positive and negative predicates used to assign polarity scores (+1 or -1) to extracted events that match it and lack complex phenomena like negation.",
+          "metadata_f1_cosine": 0.1739,
+          "metadata_f1_bm25": 0.4,
+          "metadata_f1_tf_isf": 0.4,
+          "metadata_section_recall_cosine": 0.0,
+          "metadata_section_recall_bm25": 0.0,
+          "metadata_section_recall_tf_isf": 0.0,
+          "predict_cosine_answer": "The seed lexicon is a reference lexicon...",
+          "predict_bm25_answer": "The seed lexicon is a very small set...",
+          "predict_tf_isf_answer": "The seed lexicon is a very small lexicon..."
+        },
+        {
+          "input": "Using all data to train: AL -- BiGRU achieved 0.843 accuracy, AL -- BERT achieved 0.863 accuracy, AL+CA+CO -- BiGRU achieved 0.866 accuracy, AL+CA+CO -- BERT achieved 0.835, accuracy, ACP -- BiGRU achieved 0.919 accuracy",
+          "output": "Using all data to train: AL -- BiGRU achieved 0.843 accuracy, AL -- BERT achieved 0.863 accuracy, AL+CA+CO -- BiGRU achieved 0.866 accuracy, AL+CA+CO -- BERT achieved 0.835, accuracy, ACP -- BiGRU achieved 0.919 accuracy, ACP -- BERT achived 0.933, accuracy, ACP+AL+CA+CO -- BiGRU achieved 0.917 accuracy, ACP+AL+CA+CO -- BERT achieved 0.913 accuracy.",
+          "metadata_gold_section_type": "Unknown",
+          "predict_cosine": "Models using discourse relation-based label propagation performed close to (within 7% of) semi-supervised counterparts, with BiGRU+AL+CA+CO achieving the highest accuracy; supervised ACP outperformed semi-supervised variants on large data, but the proposed method was effective with small labeled data.",
+          "predict_bm25": "The discourse relation-based label propagation models performed considerably better than random baselines and within 7% of semi-supervised counterparts, with the BiGRU encoder on AL+CA+CO achieving the highest accuracy; the method was especially effective when labeled data were small (6,000 events).",
+          "predict_tf_isf": "The discourse relation-based label propagation models performed considerably better than random baselines and within 7% of semi-supervised counterparts, with the BiGRU encoder on AL+CA+CO achieving the highest score; the method was effective when labeled data were small but supervised models outperformed it on larger data.",
+          "metadata_f1_cosine": 0.2564,
+          "metadata_f1_bm25": 0.1446,
+          "metadata_f1_tf_isf": 0.1389,
+          "metadata_section_recall_cosine": 0.0,
+          "metadata_section_recall_bm25": 0.0,
+          "metadata_section_recall_tf_isf": 0.0,
+          "predict_cosine_answer": "Models using discourse relation-based label...",
+          "predict_bm25_answer": "The discourse relation-based label propagation...",
+          "predict_tf_isf_answer": "The discourse relation-based label propagation..."
+        },
+        {
+          "input": "based on the relation between events, the suggested polarity of one event can determine the possible polarity of the other event ",
+          "output": "based on the relation between events, the suggested polarity of one event can determine the possible polarity of the other event ",
+          "metadata_gold_section_type": "Method",
+          "predict_cosine": "Discourse relations are used to propagate polarities of affective events from seeds, linking event pairs so that polarity is transferred through those relations.",
+          "predict_bm25": "Discourse relations (e.g., Cause, Concession) are used to propagate polarity from seed predicates to related events—same polarity for Cause and reverse for Concession—by exploiting how linked events tend to share or invert sentiment.",
+          "predict_tf_isf": "Discourse relations (e.g., Cause, Concession) are used to propagate polarity from seed events to related events—same polarity for Cause and reverse for Concession—based on how events are linked in a raw corpus.",
+          "metadata_f1_cosine": 0.2162,
+          "metadata_f1_bm25": 0.2439,
+          "metadata_f1_tf_isf": 0.3077,
+          "metadata_section_recall_cosine": 0.0,
+          "metadata_section_recall_bm25": 0.0,
+          "metadata_section_recall_tf_isf": 0.0,
+          "predict_cosine_answer": "Discourse relations are used to propagate...",
+          "predict_bm25_answer": "Discourse relations (e.g., Cause, Concession) are used...",
+          "predict_tf_isf_answer": "Discourse relations (e.g., Cause, Concession) are used..."
+        }
+      ]
+    }
+  ]
+}
